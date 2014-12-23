@@ -1,0 +1,34 @@
+{
+  "name": "xs-angular-wizard",
+  "version": "1.0.0",
+  "description": "A simple but useful Angular directive to create wizards, with automatic save button and navigable breadcrumbs buttons.",
+  "author": {
+    "name": "Greg Milligan",
+    "email": "xybersolve@gmail.com",
+    "url": "gmilligan.github.io"
+  },
+  "main": "src/xs-wizard-widget.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gmilligan/xs-angular-wizard.git"
+  },
+  "keywords": [
+    "angular",
+    "wizard",
+    "directive"
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gmilligan/xs-angular-wizard/issues"
+  },
+  "homepage": "https://github.com/gmilligan/xs-angular-wizard",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-cli": "^0.1.13",
+    "jshint-stylish": "^1.0.0",
+    "load-grunt-tasks": "^2.0.0"
+  }
+}
