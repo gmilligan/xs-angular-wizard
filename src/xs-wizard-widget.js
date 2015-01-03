@@ -2,7 +2,7 @@
 
   angular
     .module('xs.ui.wizard', [])
-    .value('TEMPLATE_DIR', './../src') // user configurable
+    .value('XS_WIZARD_TEMPLATE_DIR', './../src') // user configurable
     .controller('XSSampleCtrl', ['$scope', function($scope, $rootScope){
 
       var vm = this;
@@ -17,13 +17,13 @@
       };
     }])
 
-    .directive('xsWizard',['TEMPLATE_DIR', function(TEMPLATE_DIR) {
+    .directive('xsWizard',['XS_WIZARD_TEMPLATE_DIR', function(XS_WIZARD_TEMPLATE_DIR) {
 
       return {
         restrict: 'E',
         transclude: true,
         replace: true,
-        templateUrl: TEMPLATE_DIR + '/xs-wizard-main.html',
+        templateUrl: XS_WIZARD_TEMPLATE_DIR + '/xs-wizard-main.html',
 
         scope: {
           subTitle: '@',
@@ -92,12 +92,12 @@
         } // end controller
       }; // end return
     }])
-    .directive('xsWizardPage', ['TEMPLATE_DIR', function(TEMPLATE_DIR) {
+    .directive('xsWizardPage', ['XS_WIZARD_TEMPLATE_DIR', function(XS_WIZARD_TEMPLATE_DIR) {
       return {
         restrict: 'E',
         transclude: true,
         replace: true,
-        templateUrl: TEMPLATE_DIR + '/xs-wizard-page.html',
+        templateUrl: XS_WIZARD_TEMPLATE_DIR + '/xs-wizard-page.html',
 
         scope: {
           pageTitle: '@',

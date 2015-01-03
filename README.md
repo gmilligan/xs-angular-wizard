@@ -17,7 +17,11 @@ Include XyberSolve Wizard module `xs.ui.wizard` into your project
 Syntax:
 ```js
 
-    angular.module('app', ['xs.ui.wizard']);
+    angular.module('app', ['xs.ui.wizard'])
+           .value('XS_WIZARD_TEMPLATE_DIR', 'app/template'); 
+                       
+    // setting template folder
+    // point to directive's template dir or move them to yours                        
     
 ```
 ----
@@ -116,6 +120,7 @@ Simplified Controller Syntax:
 
   angular
     .module('app')
+    .value('XS_WIZARD_TEMPLATE_DIR', 'app/templates') // user configurable
     .controller('MyCtrl', ['myService', MyCtrl]);
   
   function MyCtrl(myService){
