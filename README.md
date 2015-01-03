@@ -17,7 +17,11 @@ Include XyberSolve Wizard module `xs.ui.wizard` into your project
 Syntax:
 ```js
 
-    angular.module('app', ['xs.ui.wizard']);
+    angular.module('app', ['xs.ui.wizard'])
+           .value('XS_WIZARD_TEMPLATE_DIR', 'app/template'); 
+                       
+    // setting template folder
+    // point to directive's template dir or move them to yours                        
     
 ```
 ----
@@ -27,15 +31,16 @@ Syntax:
 There are several wizard elements that can be toggle to your liking (sample code below). 
 The `has-*` attributes can be set to `false` or just left out to hide the associated element.  
 
- attribute        | functionality
-------------------|----------------------------
-`has-save`        |  Toggle "Save" on last page, replaces "Next" button. 
-`has-cancel`      | Toggle "Cancel" button (left of "Save") on last page only.     
-`has-breadcrumbs` | Toggle button group showing page "tags". 
-`save-text`       | Text to be displayed on "Save" Button 
-`on-page-change`  | Register controller method to call on page change.
-`on-save`         | Register controller method to call when "Save" is pressed.
-`on-cancel`       | Register controller method to call when "Cancel" is pressed. 
+ attribute         | functionality
+-------------------|----------------------------
+`has-save`         |  Toggle "Save" on last page, replaces "Next" button. 
+`has-cancel`       | Toggle "Cancel" button (left of "Save") on last page only.     
+`has-breadcrumbs`  | Toggle button group showing page "tags". 
+`hide-nav-buttons` | Hide the "Prev" and "Next" buttons (defaults to false).
+`controls-on-top`  | Put "Prev", "Next" and breadcrumb buttons on top (default is bottom.) 
+`on-page-change`   | Register controller method to call on page change.
+`on-save`          | Register controller method to call when "Save" is pressed.
+`on-cancel`        | Register controller method to call when "Cancel" is pressed. 
 
 Syntax (below):
 * No "cancel" button is shown, has-cancel is left out
@@ -51,6 +56,23 @@ Syntax (below):
                on-save="vm.save();">
 
 ```
+
+Alternate Syntax (below):
+This configuration will create a "Tabbed" like interface, with buttons as the tabs.
+ 
+* Put controls on top 
+* Hide nav buttons 
+* Hide breadcrumb buttons
+* No save button 
+
+```html
+    
+    <xs-wizard sub-title="Tab Interface"
+               controls-on-top="true"
+               hide-nav-buttons="true">
+
+```
+
 ----
 
 <a name="usage"></a>
@@ -116,6 +138,7 @@ Simplified Controller Syntax:
 
   angular
     .module('app')
+    .value('XS_WIZARD_TEMPLATE_DIR', 'app/templates') // user configurable
     .controller('MyCtrl', ['myService', MyCtrl]);
   
   function MyCtrl(myService){
