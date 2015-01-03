@@ -1,9 +1,10 @@
-(function (window, angular) {  'use strict';
+(function (window, angular, undefined) {  'use strict';
 
   angular
     .module('xs.ui.wizard', [])
     .value('XS_WIZARD_TEMPLATE_DIR', './../src') // user configurable
-    .controller('XSSampleCtrl', ['$scope', function($scope, $rootScope){
+
+    .controller('XSSampleCtrl',[function(){
 
       var vm = this;
       vm.show = function(key, state) {
@@ -17,7 +18,7 @@
       };
     }])
 
-    .directive('xsWizard',['XS_WIZARD_TEMPLATE_DIR', function(XS_WIZARD_TEMPLATE_DIR) {
+    .directive('xsWizard', ['XS_WIZARD_TEMPLATE_DIR', function(XS_WIZARD_TEMPLATE_DIR) {
 
       return {
         restrict: 'E',
@@ -31,7 +32,9 @@
           onPageChange: '&',
           onCancel: '&',
           onSave: '&',
+          hideNavButtons: '=',
           hasBreadcrumbs: '=',
+          controlsOnTop: '=',
           hasCancel: '=',
           hasSave: '='
         },
@@ -92,7 +95,9 @@
         } // end controller
       }; // end return
     }])
+
     .directive('xsWizardPage', ['XS_WIZARD_TEMPLATE_DIR', function(XS_WIZARD_TEMPLATE_DIR) {
+
       return {
         restrict: 'E',
         transclude: true,
@@ -109,6 +114,16 @@
           xsWizard.addPage(scope);
         }
       }; // end return
+
+    }])
+
+    .directive('xsWizardControls', ['XS_WIZARD_TEMPLATE_DIR', function(XS_WIZARD_TEMPLATE_DIR) {
+      return {
+        restrict: 'E',
+        replace: true,
+        templateUrl: XS_WIZARD_TEMPLATE_DIR + '/xs-wizard-controls.html'
+      }; // end return
+
     }]);
 
 })(window, window.angular);
